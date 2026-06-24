@@ -10,9 +10,10 @@ class Login {
     static callback_naook=null
     static config = {
         cor:"#048",
-        img:"./logo.png"
+        img:"./logo.png",
+        endpoint: null //
     };
-    static endpoint = "https://8cd5aea3-fda7-4a1a-8029-61e32d3aa228-00-zhgbt789webt.riker.replit.dev/api/login"
+   
 
     static login = (callback_ok,callback_naook,config=null) => {
     if(config!=null){
@@ -168,26 +169,27 @@ logoLogin.appendChild(imglogoLogin)
     static verificaLogin=()=>{
         const mat =document.getElementById("f_username").value
         const pas = document.getElementById("f_senha").value
-        const endpoint = `https://8cd5aea3-fda7-4a1a-8029-61e32d3aa228-00-zhgbt789webt.riker.replit.dev/api/login?matricula=${mat}&senha=${pas}`
+        /* const endpoint = `https://8cd5aea3-fda7-4a1a-8029-61e32d3aa228-00-zhgbt789webt.riker.replit.dev/api/login?matricula=${mat}&senha=${pas}` */
+        const endpoint =  `${this.config.endpoint}/?matricula=${mat}&senha=${pas}`
+        console.log(endpoint)
 
     fetch(endpoint)
         .then(res=>res.json())
         .then(res=>{
             console.log(res)
            if(res){
-                this.logado=true
-                this.matlogado=mat
-                this.nomelogado=res.nome
-                this.acessologado=res.acesso
+                sessionStorage.setItem("logado","true")
+                sessionStorage.setItem("matlogado",mat)
+                sessionStorage.setItem("nomelogado",res.nome)
+                sessionStorage.setItem("acessologado",res.acesso)
                 this.callback_ok()
                 this.fechar()
                 
             }else{
-                this.logado=false
-                this.matlogado=null
-                this.nomelogado=null
-                this.acessologado=null
-                console.log("usuario não encontrado ")
+                sessionStorage.setItem("logado","false")
+                sessionStorage.setItem("matlogado","")
+                sessionStorage.setItem("nomelogado","")
+                sessionStorage.setItem("acessologado","")
                 this.callback_naook()
             } 
         
