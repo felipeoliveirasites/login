@@ -16,10 +16,10 @@ class Login {
    
 
     static login = (callback_ok,callback_naook,config=null) => {
-        sessionStorage.setItem("logado","false")
-        sessionStorage.setItem("matlogado","")
-        sessionStorage.setItem("nomelogado","")
-        sessionStorage.setItem("acessologado","")
+    sessionStorage.setItem("logado","false")
+    sessionStorage.setItem("matlogado","")
+    sessionStorage.setItem("nomelogado","")
+    sessionStorage.setItem("acessologado","")
     if(config!=null){
         this.config = config
     }
