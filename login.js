@@ -179,7 +179,6 @@ logoLogin.appendChild(imglogoLogin)
         const pas = document.getElementById("f_senha").value
         /* const endpoint = `https://8cd5aea3-fda7-4a1a-8029-61e32d3aa228-00-zhgbt789webt.riker.replit.dev/api/login?matricula=${mat}&senha=${pas}` */
         const endpoint =  `${this.config.endpoint}/?matricula=${mat}&senha=${pas}`
-        console.log(endpoint)
 
     fetch(endpoint)
         .then(res=>res.json())
