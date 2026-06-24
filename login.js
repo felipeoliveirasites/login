@@ -16,6 +16,10 @@ class Login {
    
 
     static login = (callback_ok,callback_naook,config=null) => {
+        sessionStorage.setItem("logado","false")
+        sessionStorage.setItem("matlogado","")
+        sessionStorage.setItem("nomelogado","")
+        sessionStorage.setItem("acessologado","")
     if(config!=null){
         this.config = config
     }
@@ -109,6 +113,10 @@ const btn_cancelar =document.createElement("button")
 btn_cancelar.setAttribute("id", "btn_cancelar")
 btn_cancelar.innerHTML="Cancelar"
 btn_cancelar.addEventListener("click",(event)=>{
+                sessionStorage.setItem("logado","false")
+                sessionStorage.setItem("matlogado","")
+                sessionStorage.setItem("nomelogado","")
+                sessionStorage.setItem("acessologado","")
 this.fechar()
 })
 botoesLogin.appendChild(btn_cancelar)
